@@ -1,26 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { GlobalStyle } from './styles/globalStyles';
+import { ToastContainer } from 'react-toastify';
+import { Sidebar } from './layout/Sidebar';
+import { Header } from './layout/Header.old';
+import { Conteudo } from './layout/Conteudo';
+import { BrowserRouter } from 'react-router-dom';
+import { FaHome } from 'react-icons/fa';
+import { Footer } from './layout/Footer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+   const listaSidebar = ([
+      { icone: FaHome, texto: "Principal", to: '/' },
+      { icone: FaHome, texto: "Pagina 1", to: '/Pagina1' },
+      { icone: FaHome, texto: "Pagina 2", to: '/Pagina2' }
+   ]);
+
+   return (
+      <BrowserRouter>
+         <GlobalStyle />
+         <ToastContainer />
+         <Sidebar listSidebar={listaSidebar} />
+         <Header />
+         <Conteudo />
+         <Footer />
+      </BrowserRouter>
+   );
 }
 
 export default App;
