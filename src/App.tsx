@@ -1,11 +1,12 @@
 import { GlobalStyle } from './styles/globalStyles';
 import { ToastContainer } from 'react-toastify';
 import { Sidebar } from './layout/Sidebar';
-import { Header } from './layout/Header.old';
 import { Conteudo } from './layout/Conteudo';
 import { BrowserRouter } from 'react-router-dom';
 import { FaHome } from 'react-icons/fa';
 import { Footer } from './layout/Footer';
+import { Header } from './layout/Header';
+import { ReactComponent as LogoSvg } from './assets/logotipo.svg'
 
 function App() {
    const listaSidebar = ([
@@ -19,7 +20,7 @@ function App() {
          <GlobalStyle />
          <ToastContainer />
          <Sidebar listSidebar={listaSidebar} />
-         <Header />
+         <Header titulo="Template Base" LogotipoSVG={LogoSvg} />
          <Conteudo />
          <Footer />
       </BrowserRouter>

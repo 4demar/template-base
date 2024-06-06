@@ -1,51 +1,57 @@
-import styled from 'styled-components'
-import React from 'react'
-import { Link } from 'react-router-dom'
+import React from 'react';
+import 'react-toastify/dist/ReactToastify.css';
+import { ToastContainer } from "react-toastify";
+import { StyleHeader } from '../../styles/layout';
+import { Container, Content } from './styles';
 
-interface HeaderProps {
-   title?: string
-   actionArrowClick?: unknown
+interface LogoProps {
+   SvgComponent: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+   width?: number;
+   height?: number;
 }
 
-const Flex = styled.div`
-    width: 100%;
-    height: 4rem;
-    display: flex;
-    justify-content: center;
-    position: relative;
-    align-items: center;
-`
+const Logo: React.FC<LogoProps> = ({ SvgComponent, width = 100, height = 100 }) => {
+   return (
+      <div>
+         <SvgComponent width={width} height={height} />
+      </div>
+   );
+};
 
-const ArrowStyle: React.CSSProperties = {
-   paddingBottom: '0.5rem',
-   left: '2rem',
-   position: 'absolute',
-   fontSize: '2.8rem',
-   cursor: 'pointer',
-   color: '#5F8DD3'
+
+interface props {
+   titulo: string;
+   LogotipoSVG: React.FunctionComponent<React.SVGProps<SVGSVGElement>>;
+   width?: number;
+   height?: number;
 }
 
-export const Header = ({ title, actionArrowClick }: HeaderProps) => (
-   <Flex>
-      {(() => {
-         if (typeof actionArrowClick === 'string') {
-            return (
-               <Link to={actionArrowClick} style={ArrowStyle}>
-                  {/* <FontAwesomeIcon icon="angle-left" /> */}
-               </Link>
-            )
-         } else if (typeof actionArrowClick === 'function') {
-            return (
-               <a
-                  onClick={actionArrowClick as () => void}
-                  style={ArrowStyle}
-               >
-                  {/* <FontAwesomeIcon icon="angle-left" /> */}
-               </a>
-            )
-         }
-      })()}
+export function Header({ titulo, LogotipoSVG, width = 100, height = 100 }: props) {
+   return (
+      <>
 
-      <h1>{title}</h1>
-   </Flex>
-)
+         <Container>
+            <Content>
+               <div className='rotacao_logo'>
+                  <LogotipoSVG width={width} height={height} />
+                  {/* <Logotipo className='logotipo' /> */}
+               </div>
+               <h3 className='texto'>{titulo}</h3>
+            </Content>
+            <ToastContainer
+               position="top-right"
+               autoClose={3000}
+               hideProgressBar={false}
+               newestOnTop={false}
+               closeOnClick
+               rtl={false}
+               pauseOnFocusLoss
+               draggable
+               pauseOnHover
+               theme="colored"
+            />
+         </Container>
+      </>
+
+   )
+}
