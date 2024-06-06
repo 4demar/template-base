@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 interface statusProps {
-    sidebar: boolean;
+   sidebar: boolean;
 }
 
 //  body{
@@ -14,7 +14,7 @@ interface statusProps {
 
 export const Container = styled.div<statusProps>`
     > svg { //Imagem Menu
-        position: fixed;
+        position: absolute;
         color: white;
         width: 26px;
         height: 26px;

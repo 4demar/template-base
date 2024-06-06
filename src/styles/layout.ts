@@ -34,15 +34,12 @@ export const StyleFooter = styled.div`
    box-shadow: 0px 0px 20px rgba(0, 0, 0, 0.1);
    background: #fff;
    width: 100%;
-   height: 100px;
-
-   /* bottom: 0;
-   left: 0; */
+   height: 80px;
    padding: 10px;
    align-content: center; //centro linha
    text-align: center; //centro coluna
    position: relative;
-
+   left: 0;
 `;
 
 export const Center = styled.div`
